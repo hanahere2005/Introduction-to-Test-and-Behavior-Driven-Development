@@ -81,5 +81,46 @@ Feature: Product Management
       | Big Mac |
       | Sheets  |
 
- 
+
+  Scenario: Searching a product based on category
+    Given I clear the page
+    When I select the "Food" category and press the "Search" button
+    Then I should see the message "Success"
+    And I should see "Big Mac" in the results
+    And I should not see non-food products like "Hat" or "Shoes" 
+Feature: Product Management
+  As a user
+  I want to be able to list and search for products
+  So that I can view all available products or find specific ones by category, availability, or name
+
+  Scenario: Listing all products successfully
+    Given I press the "Clear" button to remove previous entries
+    When I press the "Search" button
+    Then I should see the message "Success"
+    And I should see the following products in the results:
+      | Hat     |
+      | Shoes   |
+      | Big Mac |
+      | Sheets  |
+
+  Scenario: Searching a product based on category
+    Given I clear the page
+    When I select the "Food" category and press the "Search" button
+    Then I should see the message "Success"
+    And I should see "Big Mac" in the results
+    And I should not see non-food products like "Hat" or "Shoes"
+
+  Scenario: Searching a product based on availability
+    Given I set the "Available" dropdown to "True"
+    When I press the "Search" button
+    Then I should see the message "Success"
+    And I should see only available items in the results
+    And I should not see unavailable items
+
+  Scenario: Searching a product based on name
+    Given I enter "Big Mac" in the name field
+    When I press the "Search" button
+    Then I should see the message "Success"
+    And I should see "Big Mac" in the results
+    And I should not see unrelated products like "Hat" or "Shoes"
 
