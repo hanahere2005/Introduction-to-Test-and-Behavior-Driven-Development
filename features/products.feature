@@ -51,3 +51,19 @@ Feature: Manage Products
     Then the response status code should be 200
     And the response should contain 3 products
     And the products should include "Laptop", "Headphones", and "T-shirt"
+
+    Feature: List all products
+  As a user
+  I want to be able to list all available products
+  So that I can see everything currently in stock
+
+  Scenario: Listing all products successfully
+    Given I press the "Clear" button to remove previous entries
+    When I press the "Search" button
+    Then I should see the message "Success"
+    And I should see the following products in the results:
+      | Hat     |
+      | Shoes   |
+      | Big Mac |
+      | Sheets  |
+
