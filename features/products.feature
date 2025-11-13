@@ -66,4 +66,20 @@ Feature: Manage Products
       | Shoes   |
       | Big Mac |
       | Sheets  |
+Feature: Product Management
+  As a user
+  I want to be able to list and search for products
+  So that I can view all available products or find specific ones by category
+
+  Scenario: Listing all products successfully
+    Given I press the "Clear" button to remove previous entries
+    When I press the "Search" button
+    Then I should see the message "Success"
+    And I should see the following products in the results:
+      | Hat     |
+      | Shoes   |
+      | Big Mac |
+      | Sheets  |
+
+ 
 
